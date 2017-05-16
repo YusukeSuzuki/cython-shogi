@@ -26,7 +26,6 @@ __email__ = 'tasuku-s-github@titech.ac'
 __version__ = '1.0.2'
 
 ext_modules = [
-    #setuptools.Extension('cyshogi.CSA', sources=['cyshogi/CSA.pyx']),
     setuptools.Extension('cyshogi.KIF', sources=['cyshogi/KIF.pyx']),
     setuptools.Extension('cyshogi.Person', sources=['cyshogi/Person.pyx']),
     setuptools.Extension('cyshogi.cyshogi', sources=['cyshogi/cyshogi.pyx']),
