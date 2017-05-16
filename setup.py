@@ -17,25 +17,36 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-import shogi
+from Cython.Distutils import build_ext
 import setuptools
 import os
+
+__author__ = 'Tasuku SUENAGA a.k.a. gunyarakun'
+__email__ = 'tasuku-s-github@titech.ac'
+__version__ = '1.0.2'
+
+ext_modules = [
+    #setuptools.Extension('cyshogi.CSA', sources=['cyshogi/CSA.pyx']),
+    setuptools.Extension('cyshogi.KIF', sources=['cyshogi/KIF.pyx']),
+    setuptools.Extension('cyshogi.Person', sources=['cyshogi/Person.pyx']),
+    setuptools.Extension('cyshogi.cyshogi', sources=['cyshogi/cyshogi.pyx']),
+    ]
 
 def read_description():
   description = open(os.path.join(os.path.dirname(__file__), 'README.rst'), encoding='utf-8').read()
   return description
 
 setuptools.setup(
-    name = 'python-shogi',
-    version = shogi.__version__,
-    author = shogi.__author__,
-    author_email = shogi.__email__,
-    description = 'A pure Python shogi library with move generation and validation and handling of common formats.',
+    name = 'cython-shogi',
+    version = __version__,
+    author = __author__,
+    author_email = __email__,
+    description = 'A Cython shogi library with move generation and validation and handling of common formats.',
     long_description = read_description(),
     license = "GPL3",
     keywords = 'shogi csa kif',
-    url = 'https://github.com/gunyarakun/python-shogi',
-    packages = ['shogi'],
+    url = 'https://github.com/YusukeSuzuki/cython-shogi',
+    packages = ['cyshogi'],
     scripts = [],
     test_suite = 'nose.collector',
     tests_require = ['nose>=1.0', 'mock'],
@@ -45,10 +56,11 @@ setuptools.setup(
       'License :: OSI Approved :: GNU General Public License (GPL)',
       'Operating System :: OS Independent',
       'Programming Language :: Python',
-      'Programming Language :: Python :: 2',
-      'Programming Language :: Python :: 2.7',
       'Programming Language :: Python :: 3',
+      'Programming Language :: Python :: 3.5',
       'Topic :: Games/Entertainment :: Board Games',
       'Topic :: Software Development :: Libraries :: Python Modules',
     ],
+    ext_modules=ext_modules,
+    cmdclass={'build_ext': build_ext},
 )

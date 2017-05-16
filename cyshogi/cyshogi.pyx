@@ -19,10 +19,6 @@
 
 from __future__ import unicode_literals
 
-__author__ = 'Tasuku SUENAGA a.k.a. gunyarakun'
-__email__ = 'tasuku-s-github@titech.ac'
-__version__ = '1.0.2'
-
 import collections
 import re
 
@@ -2364,3 +2360,4 @@ DEFAULT_RANDOM_ARRAY = [
     0x83951AF07CE062E6, 0x9C450B161AA1D50C, 0xBD26D0D5ACBC439B, 0x41EBFBF5687571E8,
     0x86D6113C636B6F29, 0x4C532A8DB8D2B468,
 ]
+
